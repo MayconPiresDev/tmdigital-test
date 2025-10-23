@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { LeadStatus } from "./lead-status.enum";
 
 @Entity()
 export class Lead {
@@ -11,7 +12,7 @@ export class Lead {
   @Column({ unique: true })
   cpf: string;
 
-  @Column()
+  @Column({ type: 'enum', enum: LeadStatus, default: LeadStatus.NOVO })
   status: string;
 
   @Column({ nullable: true, type: 'text' })
